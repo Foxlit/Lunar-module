@@ -38,7 +38,7 @@ height = 1000
 g = 1.62
 mass = 15000
 burnt_fuel = 0
-k = 0.1
+k = 0.5
 validation = True
 end_game = False
 
@@ -52,10 +52,10 @@ while not end_game:
     burnt_fuel, validation = check_input(input_fuel)
 
     if validation:
-        make_calculations(height,speed,fuel)
+        make_calculations(height, speed, fuel)
         fuel -= burnt_fuel
         speed += (2 * g * height) ** 0.5 - burnt_fuel * k
-        height -= speed * 60
+        height -= speed
 
         print("Топлива сожжено: ", burnt_fuel, "кг")
         print("Топлива осталось: ", fuel, "кг")
