@@ -1,13 +1,17 @@
 def check_input(input_fuel):
+    float_input = 0
     try:
-        minus_fuel = fuel - input_fuel
-        int_input = abs(float(input_fuel))
-        valid_result = True
+        float_input = abs(float(input_fuel))
+        if float(fuel) - float_input < 0:
+            print("У вас нет столько топлива!")
+            valid_result = False
+        else:
+            valid_result = True
     except ValueError:
         print("Некорректный ввод! Введите число")
         int_input = 0
         valid_result = False
-    return int_input, valid_result, minus_fuel
+    return float_input, valid_result
 
 
 def control_remeing_fuel(fuel):
@@ -29,7 +33,7 @@ print(f' Добро Пожаловать в Lunar Module!\n Здесь тебе 
 
 while height > 0:
     input_fuel = input(" Сколько топлива сжечь? ")
-    burnt_fuel, validation = check_input(int(input_fuel))
+    burnt_fuel, validation = check_input(input_fuel)
 
     if validation:
         fuel -= burnt_fuel
@@ -39,16 +43,16 @@ while height > 0:
 # TODO: сделать расчет остатка топлива. Не должно быть отрицательного
 
         print("У вас нет столько топлива!")
-        print("Топлива сожжено: ", burnt_fuel, "кг")
-        print("Топлива осталось: ", fuel, "кг")
+        print("Топлива сожжено: ", round(burnt_fuel, 3), "кг")
+        print("Топлива осталось: ", round(fuel, 3), "кг")
         if speed < 0:
-            print("Скорость взлёта: ", -speed, "м/с")
+            print("Скорость взлёта: ", round(-speed, 3), "м/с")
         elif speed > 0:
-            print("Скорость посадки: ", speed, "м/с")
+            print("Скорость посадки: ", round(speed, 3), "м/с")
         else:
             print("Зависание")
-        print("Текущая высота: ", height, "м")
-        print("------------")
+        print("Текущая высота: ", round(height, 3), "м")
+        print("===============================")
         if height == 0:
             print("Вы успешно посадили корабль!")
         if height < 0:
