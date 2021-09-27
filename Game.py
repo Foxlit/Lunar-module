@@ -57,18 +57,18 @@ while not end_game:
         speed += (2 * g * height) ** 0.5 - burnt_fuel * k
         height -= speed * 60
 
-# TODO: сделать расчет остатка топлива. Не должно быть отрицательного
-
         print("Топлива сожжено: ", burnt_fuel, "кг")
         print("Топлива осталось: ", fuel, "кг")
+
         if speed < 0:
-            print("Скорость взлёта: ", -speed, "м/с")
+            print("Скорость взлёта: ", round(-speed, 3), "м/с")
         elif speed > 0:
-            print("Скорость посадки: ", speed, "м/с")
+            print("Скорость посадки: ", round(speed, 3), "м/с")
         else:
             print("Зависание")
-        print("Текущая высота: ", height, "м")
-        print("------------")
+
+        print("Текущая высота: ", round(height, 3), "м")
+        print("===============================")
         if check_flight_status(height, speed) == 1:
             print("Вы успешно посадили корабль!")
             end_game = True
