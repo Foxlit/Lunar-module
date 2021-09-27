@@ -15,7 +15,7 @@ height = 100000
 g = 1.62
 mass = 15000
 burnt_fuel = 0
-k = 30
+k = 15
 validation = True
 while height > 0:
     input_fuel = input("Сколько топлива сжечь? ")
@@ -42,4 +42,3 @@ while height > 0:
         if height < 0:
             print("Космический модуль разбился!")
 input()
-
