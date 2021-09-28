@@ -37,15 +37,30 @@ def make_calculations(curr_height, curr_speed, curr_fuel, curr_fuel_portion):
     return curr_height, curr_speed, curr_fuel
 
 
+def check_level_input(chosen_level):
+    correct_level = chosen_level
+    while True:
+        try:
+            correct_level = int(correct_level)
+        except ValueError:
+            pass
+        if correct_level in range(1, 4):
+            return correct_level
+        else:
+            correct_level = input('Некорректный выбор. Выберите от 1 до 3: ')
+
+
 burnt_fuel = 0
 validation = True
 end_game = False
 
-level = int(input('Введите уровень от 1 до 3: '))  # TODO make function to chek input level
+print(f' Добро Пожаловать в Lunar Module!\n Здесь тебе предстоит посадить космический модуль на луну!\n ')
+level = check_level_input(input('Введите уровень от 1 до 3: '))
+
 fuel, speed, height, g, mass, k = values.get_values_by_level(level)
 
-print(f' Добро Пожаловать в Lunar Module!\n Здесь тебе предстоит посадить космический модуль на луну!\n '
-      f'Вот начальные данные, чтобы сориентироваться:\n Топливо:  {fuel} кг\n Твоя начальная скорость:  {speed}\n'
+
+print(f'Вот начальные данные, чтобы сориентироваться:\n Топливо:  {fuel} кг\n Твоя начальная скорость:  {speed}\n'
       f' Твоя текущая высота: {height}\n ну что, ПОЕХАЛИ!')
 
 
