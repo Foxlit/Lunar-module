@@ -69,7 +69,9 @@ while not end_game:
     burnt_fuel, validation = check_input(input_fuel)
 
     if validation:
+
         height, speed, fuel = make_calculations(height, speed, fuel, burnt_fuel)
+
 
         print("Топлива сожжено: ", burnt_fuel, "кг")
         print("Топлива осталось: ", fuel, "кг")
